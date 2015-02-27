@@ -81,9 +81,12 @@ function callback(response, status) {
 					
 			
     				var data = destinations[j]; //destination
-					data=data.split(",").splice(-1);
-					var stringValue = "Citing Location := ;"+ origins[i] + " ;" + destinations[j] + "; Cited From :=  ; " + results[j].duration.text + " ; "+ results[j].distance.text;	
-    				addMarker(destinations[j], true, stringValue);
+					
+    				data=data.split(",").splice(-1);
+					
+					var stringValue = "Citing Location : "+ origins[i] + " : " + destinations[j] + ": Cited From :" + results[j].duration.text + ":"+ results[j].distance.text;	
+    				
+					addMarker(destinations[j], true, stringValue);
     				
 					// alert(data+" "+data1);
 					
@@ -125,13 +128,13 @@ function addMarker(location, isDestination, String) {
     	data = timec.split(".");
 		
     	//spliting string having origin,destination,duration,distance
+    	
     	var k = [];
-		k = String.split(";");
+		k = String.split(":");
 		StringVal = String + " Travel Distance = " + difference + " Kms and Time Taken = " + data[0]+ " HH : " +data[1]+" MM"; 
     	
+		alert(difference);
 		
-		
-		//alert(difference);
 		var table = document.getElementById("myTable");	
 		var row = table.insertRow(0);
 		var cell11 = row.insertCell(0);
@@ -154,28 +157,29 @@ function addMarker(location, isDestination, String) {
 		cell1.innerHTML = String;
 		cell4.innerHTML = "Flying Distance "+" : "+ difference;
 		cell5.innerHTML = "Flying Time" +" : "+ data[0]+ " HH : " +data[1]+" MM";
-		cell6.innerHTML = "Driving Distance "+" : "+ k[1];
-		cell7.innerHTML = "Driving Time" +" : "+ k[2];
-    	
-    	
-    }  
-var dest=new google.maps.LatLng(latitude,longitude);
-    var origin=new google.maps.LatLng(latti,longi);
-var distLine = [origin,dest];
-
-var flightPath=new google.maps.Polyline({
- path:distLine,
- strokeColor:"#663399",
- strokeOpacity:0.8,
- strokeWeight:2
-  });
-if(!latitude==0){
-flightPath.setMap(map);
-}
+		cell6.innerHTML = "Driving Distance "+" : "+ k[5];
+		cell7.innerHTML = "Driving Time" +" : "+ k[6]; 	
+  }
+    
+    
+	var dest=new google.maps.LatLng(latitude,longitude);
+	    var origin=new google.maps.LatLng(latti,longi);
+	var distLine = [origin,dest];
+	
+	var flightPath=new google.maps.Polyline({
+			path:distLine,
+			strokeColor:"#663399",
+			strokeOpacity:0.8,
+			strokeWeight:2
+	  });
+	
+	if(!latitude==0){
+		flightPath.setMap(map);
+	}
   
      bounds.extend(results[0].geometry.location);
       
-     map.fitBounds(bounds);
+     map.fitBounds( bounds);
  
       var marker = new google.maps.Marker({
         map: map,
@@ -199,6 +203,7 @@ flightPath.setMap(map);
     }
   });
 }
+
 
 function deleteOverlays() {
   for (var i = 0; i < markersArray.length; i++) {

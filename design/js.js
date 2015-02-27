@@ -100,7 +100,8 @@ function callback(response, status) {
 
 //--------------------------------------------------------------------------------------------------------
 function addMarker(location, isDestination, String) {
-  var iconBase;  
+  var iconBase; 
+  var i=0;
   if (isDestination) {
 	  		iconBase = 'https://maps.google.com/mapfiles/kml/shapes/schools_maps.png';
   	} else {
@@ -131,36 +132,40 @@ function addMarker(location, isDestination, String) {
     	
     	var k = [];
 		k = String.split(":");
+		
 		StringVal = String + " Travel Distance = " + difference + " Kms and Time Taken = " + data[0]+ " HH : " +data[1]+" MM"; 
     	
-		alert(difference);
 		
 		var table = document.getElementById("myTable");	
 		var row = table.insertRow(0);
 		var cell11 = row.insertCell(0);
-		document.getElementById('myTable').rows[0].cells[0].colSpan = 4
+		var cell12 = row.insertCell(1);
+		document.getElementById('myTable').rows[0].cells[0].colSpan =2
+		document.getElementById('myTable').rows[0].cells[1].colSpan =2
 		document.getElementById('myTable').rows[1].id="kka";
 		document.getElementById('kka').style="background-color:#aa1100;	border-width: 1px;";
 		
-		var row = table.insertRow(1);
-		var cell1 = row.insertCell(0);
-		var row1 = table.insertRow(2);
-		var cell4 = row1.insertCell(0);
-		var cell5 = row1.insertCell(1);
-		var cell6 = row1.insertCell(2);
-		var cell7 = row1.insertCell(2);
+	
+		var row = table.insertRow(2);
+		var cell4 = row.insertCell(0);
+		var cell5 = row.insertCell(1);
+		var cell6 = row.insertCell(2);
+		var cell7 = row.insertCell(3);
 		
-		document.getElementById('myTable').rows[1].cells[0].colSpan = 4
+		
+		
+		
 		document.getElementById('myTable').rows[1].id="kk";
 		document.getElementById('kk').style="font-style:normal;  font-size: 12px;  background-color: #001122;"
 		
-		cell1.innerHTML = String;
+		cell11.innerHTML = i+" "+k[1];
+		cell12.innerHTML = k[2];
 		cell4.innerHTML = "Flying Distance "+" : "+ difference;
 		cell5.innerHTML = "Flying Time" +" : "+ data[0]+ " HH : " +data[1]+" MM";
 		cell6.innerHTML = "Driving Distance "+" : "+ k[5];
-		cell7.innerHTML = "Driving Time" +" : "+ k[6]; 	
+		cell7.innerHTML = "Driving Time" +" : "+ k[4]; 	
   }
-    
+    i++;
     
 	var dest=new google.maps.LatLng(latitude,longitude);
 	    var origin=new google.maps.LatLng(latti,longi);

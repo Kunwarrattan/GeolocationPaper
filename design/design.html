@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<title>Map</title>
+<script type="text/javascript" src="js.js"> </script>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="map-canvas"></div>
+  <div id="content-pane">
+      <div id="inputs">
+        <p><button type="button" onclick="calculateDistances();">Calculate
+          distances</button></p>
+      </div>
+      <div id="outputDiv"></div>
+      <div id="tablePan">
+      	
+		<table class="hovertable" id="myTable" border=10> 
+      		<tr>
+      		
+      		<tr  onmouseover="this.style.backgroundColor='#123d11';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+      				
+			      		<table id="myTableInner">
+				      	
+			      		</table>
+			      		<!-- <table>
+				      		<tr  onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				      			<td><label id="di"></label></td>
+				      		</tr>
+			      		</table>
+			      	</td>
+			      	<td>
+			      		<table>
+				      		<tr  onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+				      			<td><label id="tm"></label></td>
+				      		</tr>
+				     	</table> -->
+			    </tr>	
+      	
+		</table>
+      </div>
+    </div>
+    
+</body>
+</html>

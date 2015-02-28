@@ -25,7 +25,7 @@ function initialize() {
 function calculateDistances() {
 
 	var dest5 = "Concordia University - Sir George Williams Campus, Montreal, QC";
-	var dest2 = "Instituto Politécnico Nacional, Los Mochis, Mexico";
+	var dest2 = "Instituto Politï¿½cnico Nacional, Los Mochis, Mexico";
 	var dest3 = "Rutgers University, Davidson Road, Piscataway Township, NJ, USA";
 	//var dest4 = "IIT Delhi Main Road, Hauz Khas, New Delhi, Delhi, India";
 	var dest4 = "Stanford University, Stanford, CA, United States";
@@ -97,11 +97,11 @@ function callback(response, status) {
     }
   }
 }
-
+var jj=0;
 //--------------------------------------------------------------------------------------------------------
 function addMarker(location, isDestination, String) {
   var iconBase; 
-  var i=0;
+
   if (isDestination) {
 	  		iconBase = 'https://maps.google.com/mapfiles/kml/shapes/schools_maps.png';
   	} else {
@@ -136,14 +136,24 @@ function addMarker(location, isDestination, String) {
 		StringVal = String + " Travel Distance = " + difference + " Kms and Time Taken = " + data[0]+ " HH : " +data[1]+" MM"; 
     	
 		
-		var table = document.getElementById("myTable");	
-		var row = table.insertRow(0);
+		var table = document.getElementById("myTable");
+
+        var row = table.insertRow(0);
+        var cell9 = row.insertCell(0);
+        cell9.className = 'tabelStyle';
+
+        document.getElementById('myTable').rows[0].cells[0].colSpan =4;
+        document.getElementById('myTable').rows[0].id="k";
+        document.getElementById('k').style.color= "#a23111";
+
+
+        var row = table.insertRow(1);
 		var cell11 = row.insertCell(0);
 		var cell12 = row.insertCell(1);
-		document.getElementById('myTable').rows[0].cells[0].colSpan =2
-		document.getElementById('myTable').rows[0].cells[1].colSpan =2
+		document.getElementById('myTable').rows[1].cells[0].colSpan =2
+		document.getElementById('myTable').rows[1].cells[1].colSpan =2
 		document.getElementById('myTable').rows[1].id="kka";
-		document.getElementById('kka').style="background-color:#aa1100;	border-width: 1px;";
+		document.getElementById('kka').style="background-color:#aa1100;	border-width: 11px; font-size: 10px;";
 		
 	
 		var row = table.insertRow(2);
@@ -151,21 +161,20 @@ function addMarker(location, isDestination, String) {
 		var cell5 = row.insertCell(1);
 		var cell6 = row.insertCell(2);
 		var cell7 = row.insertCell(3);
-		
-		
-		
-		
-		document.getElementById('myTable').rows[1].id="kk";
+        cell11.className = 'table1';
+        cell12.className = 'table2';
+
+		document.getElementById('myTable').rows[2].id="kk";
 		document.getElementById('kk').style="font-style:normal;  font-size: 12px;  background-color: #001122;"
 		
-		cell11.innerHTML = i+" "+k[1];
-		cell12.innerHTML = k[2];
+		cell11.innerHTML = "Citing : "+k[1];
+		cell12.innerHTML = "Cited : "+k[2];
 		cell4.innerHTML = "Flying Distance "+" : "+ difference;
 		cell5.innerHTML = "Flying Time" +" : "+ data[0]+ " HH : " +data[1]+" MM";
 		cell6.innerHTML = "Driving Distance "+" : "+ k[5];
 		cell7.innerHTML = "Driving Time" +" : "+ k[4]; 	
   }
-    i++;
+    jj++;
     
 	var dest=new google.maps.LatLng(latitude,longitude);
 	    var origin=new google.maps.LatLng(latti,longi);

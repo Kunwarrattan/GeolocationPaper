@@ -21,7 +21,13 @@
       #outputDiv {
         font-size: 11px;
       }
-      
+
+  .tabelStyle{
+      background-color: black;
+      border-style: dashed;
+      border-radius: 20px;
+
+  }
  .labels {
      color: white;
      background-color: red;
@@ -32,7 +38,23 @@
      white-space: nowrap;
      border-style: dashed;
      border-radius: 20px;
- }           
+ }
+
+ .table1{
+     font-family: verdana,arial,sans-serif;
+     font-size:11px;
+     color:#333333;
+     background-color: lightblue;
+
+ }
+
+.table2{
+    font-family: verdana,sans-serif;
+    font-size:14px;
+    color:#333333;
+    background-color: sandybrown;
+
+}
 table.hovertable {
 	font-family: verdana,arial,sans-serif;
 	font-size:11px;
